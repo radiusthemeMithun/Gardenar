@@ -1,0 +1,248 @@
+.rt-service-wrap-1 {
+	position: relative;
+	z-index: 1;
+	&:after {
+		content: "";
+		height: 100%;
+		width: 100%;
+		background-color: #F9F7EB;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: -1;
+		@media(min-width: 1200px) {
+			height: 40%;
+		}
+	}
+	.elementor-button-wrapper {
+		.elementor-button {
+			background-color: inherit;
+		}
+	}
+}
+
+.rt-service-layout-1 {
+	.service-box {
+		background-color: $white_color;
+		border-radius: 26px;
+		@media(min-width: 1200px) {
+			box-shadow: 0 4px 24px #E9E8DF;
+			overflow: hidden;
+			position: relative;
+		}
+		.service-thumbs {
+			margin-bottom: 0;
+			position: relative;
+			overflow: hidden;
+			@media(max-width: 1199px) {
+				border-radius: 26px 26px 0 0;
+			}
+			> a {
+				@media(max-width: 1199px) {
+					border-radius: 26px 26px 0 0;
+					width: 100%;
+				}
+				img {
+					transition: all .5s;
+					transform-origin: bottom left;
+					@media(max-width: 1199px) {
+						border-radius: 26px 26px 0 0;
+						width: 100%;
+					}
+				}
+			}
+		}
+		.service-icon {
+			position: absolute;
+			bottom: 35px;
+			left: 35px;
+			z-index: 0;
+			background-color: $white_color;
+			border-radius: 100%;
+			width: 60px;
+			height: 60px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition: all 520ms ease;
+			i {
+				font-size: 35px;
+				transition: all 520ms ease;
+				color: $primary_color;
+			}
+		}
+		.service-content {
+			padding: 20px 40px 30px;
+			position: relative;
+			z-index: 1;
+			&:before {
+				content: "";
+				height: 100%;
+				width: 100%;
+				background-image: url(../images/service.svg);
+				position: absolute;
+				top: -86px;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				z-index: -1;
+				background-repeat: no-repeat;
+				@media(max-width: 1199px) {
+					display: none;
+				}
+			}
+			.service-title {
+				margin-bottom: 0;
+				font-size: 22px;
+			}
+			p {
+				margin-top: 10px;
+				margin-bottom: 0;
+			}
+			.rt-button {
+				margin-top: 15px;
+			}
+			.rt-shape {
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				z-index: -1;
+				svg {
+					color: #F2F0E3;
+				}
+			}
+		}
+		&:hover {
+			.service-thumbs {
+				a {
+					img {
+						transform: scale(1.1);
+					}
+				}
+
+			}
+			.service-icon {
+				background-color: $primary_color;
+				i {
+					color: $white_color;
+				}
+			}
+		}
+	}
+}
+
+.rt-service-layout-2 {
+	.service-box {
+		background-color: #F9F7EB;
+		border-radius: 26px;
+		position: relative;
+		&:after {
+			content: "";
+			height: 100%;
+			width: 100%;
+			background-image: url(../images/service-bg.png);
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			background-repeat: no-repeat;
+			background-position: top left;
+			border-radius: 26px;
+			background-size: contain;
+			@media(max-width: 1199px) {
+				display: none;
+			}
+		}
+
+		.service-thumbs {
+			margin-bottom: 0;
+			position: relative;
+			overflow: hidden;
+			border-radius: 26px 26px 0 0;
+			@media(min-width: 1200px) {
+				height: 313px;
+				border-radius: 26px;
+			}
+			img {
+				width: 100%;
+				transform: scale(1.01);
+				transition: all .5s;
+				transform-origin: bottom left;
+				border-radius: 26px 26px 0 0;
+				@media(min-width: 1200px) {
+					border-radius: 26px;
+				}
+			}
+		}
+		.service-icon {
+			position: absolute;
+			top: -84px;
+			right: 35px;
+			z-index: 1;
+			background-color: $secondary_color;
+			border-radius: 100%;
+			width: 80px;
+			height: 80px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition: all 520ms ease;
+			i {
+				font-size: 45px;
+				transition: all 520ms ease;
+				color: $white_color;
+			}
+		}
+		.service-content {
+			padding: 20px 40px 30px;
+			position: relative;
+			z-index: 1;
+			.service-title {
+				margin-bottom: 0;
+				font-size: 24px;
+			}
+			p {
+				margin-bottom: 10px;
+			}
+			.rt-button {
+				margin-top: 15px;
+			}
+			.rt-shape {
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				z-index: -1;
+				svg {
+					color: #EAE7D1;
+				}
+			}
+		}
+		.feature-list {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			.icon {
+				margin-right: 10px;
+				font-size: 20px;
+			}
+		}
+		&:hover {
+			.service-thumbs {
+				a {
+					img {
+						transform: scale(1.1);
+					}
+				}
+			}
+			.service-icon {
+				background-color: $primary_color;
+				i {
+					color: $white_color;
+				}
+			}
+		}
+	}
+}
+
+

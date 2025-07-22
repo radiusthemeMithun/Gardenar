@@ -1,0 +1,42 @@
+// Download Style
+
+.download-list {
+	.item-list + .item-list {
+		margin-top: 12px;
+	}
+	.download-link {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		background-color: $white_color;
+		color: $title_color;
+		border-radius: 10px;
+		padding: 16px 22px;
+		font-size: 18px;
+		font-weight: 500;
+		i {
+			display: block;
+			font-size: 22px;
+			@include transition_default;
+			color: $primary_color;
+		}
+		.text {
+			display: flex;
+			align-items: center;
+			column-gap: 10px;
+		}
+		.icon {
+			i {
+				color: $title_color;
+			}
+		}
+		&:hover {
+			.icon {
+				i {
+					animation: rtDown 2s linear infinite;
+				}
+			}
+		}
+	}
+}

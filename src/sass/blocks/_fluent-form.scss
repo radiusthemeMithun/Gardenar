@@ -1,0 +1,142 @@
+/*===============================
+Fluent form style
+================================*/
+
+.hero-subscribe {
+	@media (min-width: 768px) {
+		.frm-fluent-form .ff-t-container {
+			gap: 8px;
+		}
+	}
+}
+@media (min-width: 768px) {
+	.frm-fluent-form .ff-t-container {
+		align-items: self-start;
+	}
+}
+
+//.ff_submit_btn_wrapper {
+//	margin-bottom: 0;
+//	.ff-btn-submit {
+//		transition: all .3s ease-in-out;
+//		&:hover {
+//			opacity: 1;
+//			transition: all .3s ease-in-out;
+//		}
+//	}
+//}
+
+.ff_submit_btn_wrapper {
+	.ff_btn_style {
+		transition: all .3s ease-in-out;
+	}
+}
+
+
+.rt-newsletter-form-1 {
+	//@media (max-width: 767px) {
+	//	width: 100%;
+	//}
+	.frm-fluent-form {
+		@media (min-width: 768px) {
+			border: 1px solid #1A5530;
+			background-color: #0C4321;
+			border-radius: 60px;
+		}
+		.ff-el-group {
+			margin-bottom: 0;
+		}
+		.ff-el-form-control {
+			background-color: transparent;
+			border: 0;
+			padding: 15px 0 0 25px;
+			@media (max-width: 767px) {
+				border: 1px solid #1A5530;
+				background-color: #0C4321;
+				border-radius: 60px;
+				height: 55px;
+			}
+			&:focus {
+				outline: 0;
+				box-shadow: none;
+				background-color: transparent !important;
+			}
+		}
+		.ff_submit_btn_wrapper {
+			.ff-btn-submit {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+.rt-footer-form-2 {
+	.frm-fluent-form {
+		@media (min-width: 768px) {
+			background-color: #fff;
+			border-radius: 60px;
+			padding: 5px;
+		}
+		.ff-el-group {
+			margin-bottom: 0 !important;
+		}
+		.ff-el-form-control {
+			border: 0;
+			background-color: initial;
+			padding: 10px;
+			@media (max-width: 767px) {
+				background-color: #fff;
+				border-radius: 60px;
+				height: 55px;
+			}
+		}
+		.ff_submit_btn_wrapper {
+			.ff-btn-submit {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+.frm-fluent-form select {
+	background-color: $white_color;
+	border-radius: 10px;
+	padding: 16px 13px;
+	width: 100%;
+	outline: none;
+	appearance: none;
+	background-size: 12px;
+	background-image: url(../images/select.svg) !important;
+	background-repeat: no-repeat;
+	background-position: 90%;
+	transition: all ease 0.31s;
+}
+.frm-fluent-form select:focus {
+	outline: 0;
+	box-shadow: none;
+	border: 0;
+}
+
+.rt-estimate-form {
+	.frm-fluent-form {
+		select {
+			background-image: url(../images/select-white.svg) !important;
+		}
+	}
+}
+
+.ff-default .ff_btn_style:focus, .ff-default .ff_btn_style:hover {
+	opacity: 1 !important;
+	transition: all .3s ease-in-out;
+}
+
+.rt-contact-form {
+	.frm-fluent-form {
+		.ff-el-group {
+			margin-bottom: 15px;
+		}
+		.ff_submit_btn_wrapper {
+			margin-bottom: 0;
+		}
+	}
+}

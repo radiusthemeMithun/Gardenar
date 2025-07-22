@@ -1,0 +1,50 @@
+.moving-shape-wrap {
+	@media (max-width: 1024px) {
+		text-align: center;
+	}
+}
+
+.about-round-box {
+	position: relative;
+	height: 160px;
+	width: 160px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	background-color: $white_color;
+	border-radius: 100%;
+}
+.moving-shape-box {
+	width: 90px;
+	height: 90px;
+	border-radius: 100%;
+	background-color: $secondary_color;
+	text-align: center;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	i {
+		font-size: 20px;
+		color: $white_color;
+		position: relative;
+		z-index: 1;
+		transform: rotate(-46deg);
+	}
+	.about-shape {
+		height: 139px;
+		width: 139px;
+		border-radius: 100%;
+		display: flex;
+		justify-content: center;
+		//align-items: center;
+		transition: all 0.3s ease-in-out;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translateY(-50%) translateX(-50%);
+		.shape {
+			animation-duration: 15s;
+		}
+	}
+}

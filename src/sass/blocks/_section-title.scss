@@ -1,0 +1,238 @@
+/*===============================
+Section Title
+================================*/
+.elementor-section-wrap {
+	overflow: hidden;
+}
+.section-title-wrapper {
+	position: relative;
+	z-index: 1;
+	.top-sub-title-wrap {
+		display: block;
+	}
+	.top-sub-title {
+		font-size: 14px;
+		display: inline-flex;
+		align-items: center;
+		margin-bottom: 13px;
+		text-transform: uppercase;
+		color: $white_color;
+		font-weight: 600;
+		padding: 8px 15px;
+		line-height: 1;
+		background-color: $secondary_color;
+		border-radius: 40px;
+
+		i {
+			margin-right: 5px;
+		}
+		&.left-right-shape {
+			clip-path: polygon(0 0, 100% 0, 95% 50%, 100% 100%, 0 100%, 5% 50%);
+			background: linear-gradient(111deg, $primary_color 19.42%, $secondary_color 73.08%);
+			padding: 4px 24px;
+			color: $white_color;
+		}
+	}
+	.main-title {
+		position: relative;
+		display: inline-block;
+		font-size: 36px;
+		line-height: 42px;
+		@media (max-width: 767px) {
+			font-size: 30px;
+			line-height: 36px;
+		}
+		.has-animation {
+			width: 0;
+			position: absolute;
+			top: 40px;
+			right: 0;
+			line-height: 1;
+		}
+		.active-animation {
+			stroke-dasharray: 770;
+			animation: Rtdraw 1s reverse;
+			width: auto;
+		}
+		path {
+			stroke: $secondary_color;
+		}
+		span {
+			font-weight: 400;
+		}
+		img.spin {
+			animation: spin 15s linear infinite;
+		}
+		.leaf-shape {
+			path {
+				stroke: transparent;
+			}
+		}
+	}
+
+	.line-shape {
+		//&:after {
+		//	position: absolute;
+		//	content: "";
+		//	bottom: 3px;
+		//	left: 0;
+		//	width: 0;
+		//	height: 7px;
+		//	background-color: $primary_color;
+		//	z-index: -1;
+		//	transition: all ease 1s;
+		//}
+		//&.center {
+		//	&:after {
+		//		right: 0;
+		//		margin: 0 auto;
+		//	}
+		//}
+		//&.right {
+		//	&:after {
+		//		left: auto;
+		//		right: 0;
+		//	}
+		//}
+		//&.active-animation {
+		//	&:after {
+		//		width: 325px;
+		//	}
+		//}
+	}
+	.description {
+		p {
+			opacity: 1 !important;
+			margin-bottom: 15px;
+		}
+	}
+	ul.feature-list {
+		display: inline-block;
+		list-style: none;
+		margin: 0;
+		padding: 20px 0 0;
+		text-align: left;
+		&.two-column {
+			li {
+				@media (min-width: 768px) {
+					width: 50%;
+					float: left;
+				}
+
+			}
+		}
+	}
+	.list-layout-1 {
+		li {
+			font-size: 17px;
+			font-weight: 600;
+			margin-bottom: 12px;
+			color: $title_color;
+			.icon {
+				margin-right: 10px;
+				color: $primary_color;
+				font-size: 22px;
+			}
+		}
+	}
+	.list-layout-2 {
+		li {
+			font-size: 17px;
+			font-weight: 600;
+			margin-bottom: 10px;
+			color: $title_color;
+			.icon {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 18px;
+				width: 44px;
+				height: 44px;
+				margin-right: 9px;
+				border-radius: 100%;
+				color: $primary_color;
+				border: 1px solid $border_color;
+				background-color: $body_bg_color;
+			}
+		}
+	}
+	.shadow-title-wrap {
+		position: absolute;
+		right: 0;
+		top: 50px;
+		z-index: -1;
+		.shadow-title {
+			display: inline-block;
+			font-size: 150px;
+			line-height: 48px;
+			font-weight: 700;
+			-webkit-text-fill-color: transparent;
+			-webkit-text-stroke-width: 2px;
+			-webkit-text-stroke-color: #E4E9F1;
+			text-transform: uppercase;
+		}
+	}
+	.shape {
+		position: absolute;
+		top: -30px;
+		left: -80px;
+		z-index: -1;
+		animation: rtFigureAnimate 6s ease-in-out infinite alternate;
+		@media (max-width: 1024px) {
+			display: none;
+		}
+	}
+}
+
+
+
+@media (max-width: 991px) {
+	.section-title-wrapper .description br,
+	.section-title-wrapper .main-title br {
+		display: none;
+	}
+}
+
+.elementor-68 {
+	.elementor-element-3368ade {
+		 .section-title-wrapper {
+			 .main-title {
+				 .has-animation {
+					 top: 60px;
+					 right: 230px;
+					 @media (max-width: 1024px) {
+						 display: none;
+					 }
+				 }
+			 }
+		 }
+	}
+}
+
+.section-title-wrapper-layout-2 {
+	.main-title {
+		position: relative;
+		z-index: 1;
+		.has-animation {
+			width: 0;
+			position: absolute;
+			top: 25px;
+			z-index: -1;
+			right: 25px;
+		}
+		.active-animation {
+			width: 100%;
+			animation: fadeInUp .5s;
+		}
+		.inner-shape {
+			path {
+				fill: $secondary_color;
+			}
+			@media (max-width: 1024px) {
+				display: none;
+			}
+		}
+	}
+}
+
+/* End Section Title */

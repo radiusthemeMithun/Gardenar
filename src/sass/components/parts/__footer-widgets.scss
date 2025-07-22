@@ -1,0 +1,260 @@
+/* Footer Widget wrapper
+***************************/
+//.site-footer {
+//	overflow: hidden;
+//	z-index: 2;
+//}
+.footer-widgets-wrapper {
+	padding-top: 100px;
+	padding-bottom: 50px;
+	font-size: 15px;
+	background-color: #003113;
+	position: relative;
+	.footer-shape {
+		ul {
+			li {
+				position: absolute;
+				&:nth-child(1) {
+					top: 50%;
+					transform: translateY(-50%);
+					left: 0;
+				}
+				&:nth-child(2) {
+					top: auto;
+					transform: translateY(0);
+					left: auto;
+					bottom: -20px;
+					right: 50px;
+				}
+			}
+		}
+	}
+
+	//Default widgets overwrite
+	.footer-widgets {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
+
+		.widget-title, .widgettitle {
+			font-size: 22px;
+			margin-bottom: 20px;
+			color: $white_color;
+		}
+
+		> .widget {
+			flex-grow: 25;
+		}
+
+		ul {
+			list-style: none;
+			padding-left: 0;
+
+			ul {
+				padding-left: 20px;
+			}
+		}
+	}
+}
+.site-footer {
+	p {
+		color: #9CB1A4;
+	}
+	.footer-shortcode {
+		margin-top: 24px;
+		.fluentform {
+			.ff-t-container {
+				position: relative;
+				@media(min-width: 768px) {
+					gap: 0;
+					align-items: start;
+				}
+			}
+			.frm-fluent-form {
+				@media(min-width: 768px) {
+					background-color: $white_color;
+					padding: 6px;
+					border-radius: 60px;
+				}
+				.ff-el-form-control {
+					border: 0;
+					&:focus {
+						outline: 0;
+						box-shadow: none;
+					}
+					&::placeholder {
+						color: #648A73;
+					}
+				}
+				.ff-btn-submit {
+					border: 0;
+					background-color: $secondary_color;
+					text-transform: uppercase;
+					color: $white_color;
+					transition: all .3s ease-in-out;
+					margin-top: 10px;
+					@media(min-width: 768px) {
+						border-radius: 60px;
+						margin-top: 0;
+					}
+					&:hover {
+						opacity: 1;
+						background-color: $primary_color;
+					}
+				}
+			}
+		}
+	}
+	.footer-widget-logo {
+		img {
+			margin-bottom: 15px;
+		}
+	}
+
+	.footer-social:not(:has(*)) {
+		background: red;
+		padding: 15px;
+	}
+	.footer-social {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		flex-wrap: wrap;
+		margin-top: 24px;
+		a {
+			color: $white_color;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			transition: all 0.4s ease-in-out;
+			overflow: hidden;
+			svg {
+				fill: $white_color;
+			}
+			&:hover {
+				color: $secondary_color;
+				svg {
+					//animation: toBottomFromTop 0.7s forwards;
+					fill: $secondary_color;
+				}
+			}
+		}
+		svg {
+			width: 14px;
+			height: 14px;
+		}
+	}
+	.fluentform {
+		.ff-t-container {
+			position: relative;
+			@media(min-width: 768px) {
+				gap: 0;
+				align-items: start;
+			}
+		}
+		.ff-el-group {
+			margin-bottom: 0;
+		}
+		.ff-btn-submit {
+			margin-bottom: 0 !important;
+			i {
+				display: block;
+				transition: all 0.4s ease-in-out;
+			}
+			&:hover {
+				i {
+					animation: headShake 1.5s;
+				}
+			}
+		}
+		.ff-t-cell {
+			&:first-of-type {
+				flex-basis: 100% !important;
+			}
+		}
+	}
+
+	.tagcloud {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 5px;
+		a {
+			color: $primary_color;
+			background: $gray20;
+			border-radius: 6px;
+			display: inline-block;
+			font-size: 16px!important;
+			margin: 0;
+			padding: 8px 18px;
+			line-height: 1.4;
+			&:hover {
+				background-color: $secondary_color;
+				color: $button_color;
+			}
+		}
+	}
+
+	.widget_nav_menu,
+	.widget_archive,
+	.widget_categories,
+	.widget_pages,
+	.widget_meta {
+		ul {
+			li {
+				color: #9CB1A4;
+				a {
+					position: relative;
+					&:before {
+						background-color: $secondary_color;
+						position: absolute;
+						content: "";
+						bottom: 1px;
+						right: 0;
+						height: 1px;
+						width: 0;
+						opacity: 0;
+						transition: 0.5s;
+					}
+					&:hover {
+						color: $secondary_color;
+						&:before {
+							width: 100%;
+							left: 0;
+							opacity: 1;
+						}
+					}
+				}
+			}
+		}
+	}
+	.widget_calendar {
+		tr {
+			color: #9CB1A4;
+		}
+		.wp-calendar-nav {
+			a {
+				color: $white_color;
+			}
+		}
+	}
+	.widget_rss {
+		.widget-title {
+			.rss-widget-title {
+				color: $white_color;
+			}
+		}
+		ul {
+			li {
+				color: #9CB1A4;
+			}
+		}
+	}
+	.widget_recent_comments {
+		ul {
+			li {
+				color: #9CB1A4;
+			}
+		}
+	}
+}
+

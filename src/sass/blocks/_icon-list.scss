@@ -1,0 +1,59 @@
+// Icon List
+
+.rt-icon-list {
+	ul {
+		@include list_default();
+		li {
+			margin-bottom: 10px;
+			&:last-child {
+				margin-bottom: 0 !important;
+			}
+		}
+	}
+	.title-link {
+		position: relative;
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		background-color: $meta_light;
+		color: $title_color;
+		border-radius: 8px;
+		padding: 22px 25px;
+		font-size: 17px;
+		font-weight: 500;
+		line-height: 22px;
+		z-index: 1;
+		transition: all .3s ease-in-out;
+		i {
+			font-size: 30px;
+			color: $primary_color;
+			transition: all .3s ease-in-out
+		}
+		svg {
+			width: 26px;
+		}
+		&:hover {
+			background-color: $secondary_color;
+			color: $white_color;
+			i {
+				color: $white_color;
+			}
+			&:after {
+				color: $white_color;
+			}
+		}
+	}
+	.right-arrow-icon {
+		.title-link {
+			&:after {
+				position: absolute;
+				right: 22px;
+				font-weight: 500;
+				content: "\e84b";
+				font-family: "rt-fontello";
+				color: $primary_color;
+				transition: all .3s ease-in-out
+			}
+		}
+	}
+}

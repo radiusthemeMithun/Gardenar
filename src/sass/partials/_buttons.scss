@@ -1,0 +1,203 @@
+button {
+	@include transition_default();
+	cursor: pointer;
+}
+
+.btn {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 600;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	user-select: none;
+	border-radius: 50px;
+	padding: 16px 26px;
+	font-size: 14px;
+	line-height: 1;
+	overflow: hidden;
+	z-index: 1;
+	@include transition_default();
+
+	&:active {
+		box-shadow: none;
+	}
+
+	&:focus {
+		outline: none;
+	}
+
+	&.btn-xl {
+		$xl_size: $base_fs + 8;
+		padding: ($base_fs+8) ($base_fs + 16);
+		@include font_size($xl_size, $xl_size);
+	}
+
+	&.btn-lg {
+		$lg_size: $base_fs + 2;
+		padding: ($base_fs + 2) ($base_fs + 8);
+		@include font_size($lg_size, $lg_size);
+	}
+
+	&.btn-sm {
+		$lg_size: $base_fs - 3;
+		padding: ($base_fs - 4) ($base_fs + 4);
+		@include font_size($lg_size, $lg_size);
+	}
+
+	&.btn-xs {
+		$lg_size: $base_fs - 6;
+		padding: ($base_fs - 5) ($base_fs + 2);
+		@include font_size($lg_size, $lg_size);
+	}
+
+}
+
+//Button style
+.btn-primary {
+	@include button_style($white_color, $primary_color, $secondary_color);
+}
+
+.btn-secondary {
+	@include button_style($white_color, $secondary_color, rgba($secondary_rgb, 0.8));
+}
+
+.btn-light {
+	@include button_style($white_color, $meta_color, $primary_color);
+}
+
+.btn-gray {
+	@include button_style($white_color, $meta_color, $primary_color);
+}
+.rt-button .btn {
+	column-gap: 5px;
+	&:before,
+	&::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		height: 100%;
+		@include transition_default();
+		border-radius: 50px;
+	}
+	i {
+		font-size: 16px;
+		display: inline-block;
+		transition: all 0.3s ease-in-out 0s;
+	}
+	&:hover {
+		i {
+			transform: translateX(5px);
+		}
+	}
+}
+// button 1
+.button-1 {
+	color: $primary_color;
+	&:before {
+		background-color: $gray20;
+		z-index: -1;
+	}
+	&::after {
+		background-color: $secondary_color;
+		z-index: -1;
+		transform-origin: 0 bottom;
+		transform: translate3D(-50%, 0, 0) rotate(-50deg);
+	}
+	&:hover {
+		color: $white_color;
+		&:after {
+			transition: all 0.3s;
+			transform: rotate(0deg);
+		}
+		i {
+			color: $white_color;
+		}
+	}
+}
+// button 2
+.rt-button .button-2 {
+	color: $white_color;
+	i {
+		color: $white_color;
+	}
+	&:before {
+		background-color: $secondary_color;
+		z-index: -1;
+	}
+	&::after {
+		background-color: $primary_color;
+		transform-origin: 0 bottom;
+		transform: translate3D(-50%, 0, 0) rotate(-50deg);
+		z-index: -1;
+	}
+	&:hover {
+		color: $white_color;
+		i {
+			color: $white_color;
+		}
+		&:after {
+			transition: all 0.3s;
+			transform: rotate(0deg);
+		}
+	}
+}
+// button 3
+.rt-button .button-3 {
+	color: $white_color;
+	i {
+		color: $white_color;
+	}
+	&:before {
+		background-color: $primary_color;
+		transform: translate3D(0, 0, 0);
+		z-index: -1;
+	}
+	&::after {
+		background-color: $secondary_color;
+		transform-origin: 0 bottom;
+		transform: translate3D(-50%, 0, 0) rotate(-50deg);
+		z-index: -1;
+	}
+	&:hover {
+		color: $button_text_color;
+		i {
+			color: $button_text_color;
+		}
+		&:after {
+			transition: all 0.3s;
+			transform: rotate(0deg);
+		}
+	}
+}
+
+// button 4
+.rt-button .button-4 {
+	color: $button_text_color;
+	border: 1px solid $border_color;
+	&:before {
+		background-color: $body_bg_color;
+		z-index: -1;
+	}
+	&::after {
+		background-color: $primary_color;
+		transform-origin: 0 bottom;
+		transform: translate3D(-50%, 0, 0) rotate(-50deg);
+		z-index: -1;
+	}
+	&:hover {
+		color: $white_color;
+		&:after {
+			transition: all 0.3s;
+			transform: rotate(0deg);
+		}
+		i {
+			color: $white_color;
+		}
+	}
+}

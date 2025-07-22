@@ -1,0 +1,58 @@
+.rt-sidebar.widget_gardenar_search,
+.rt-single-sidebar.widget_gardenar_search {
+	border: none;
+	padding: 0;
+	border-radius: 6px;
+}
+.gardenar-search-form .search-box {
+	position: relative;
+	border: 0;
+	border-radius: 6px;
+	overflow: hidden;
+	input {
+		font-size: 15px;
+		font-weight: 400;
+		height: 60px;
+		padding: 0 55px 0 20px;
+		border: none;
+		width: 100%;
+		border-radius: 6px;
+		background-color: $meta_light;
+		&::placeholder {
+			color: #A3B095;
+		}
+	}
+	button {
+		position: absolute;
+		right: 8px;
+		top: 8px;
+		height: 44px;
+		width: 44px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		border: none;
+		color: $meta_color;
+		background: $secondary_color;
+		border-radius: 6px;
+		transition: all .3s ease-in-out;
+		&:hover {
+			background-color: $primary_color;
+			svg {
+				fill: $white_color;
+			}
+		}
+
+
+		svg {
+			fill: $white_color;
+			width: 18px;
+			height: 18px;
+			margin: 1.5px;
+			transition: all .3s ease-in-out;
+		}
+		.btn-label {
+			display: none;
+		}
+	}
+}

@@ -1,0 +1,25 @@
+.beer-slider {
+	direction: ltr;
+	.beer-handle {
+		box-shadow: none;
+		background-color: $primary_color;
+		border: 3px solid $white_color;
+		height: 60px;
+		width: 60px;
+		color: $white_color;
+		&:before {
+			left: 15px;
+		}
+		&:after {
+			right: 5px;
+		}
+	}
+}
+
+.beer-range:focus~.beer-handle {
+	background: $primary_color;
+	box-shadow: none;
+}
+
+
+

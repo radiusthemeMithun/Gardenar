@@ -1,0 +1,150 @@
+// Service Sidebar
+
+.rt-service-sidebar {
+	background-color: #F4FAEE;
+	border-radius: 15px;
+	width: 100%;
+	max-width: 100%;
+	margin-bottom: 40px;
+	padding: 40px;
+	position: relative;
+	z-index: 1;
+	&:before {
+		content: url("../images/leaf-1.svg");
+		position: absolute;
+		top: 0;
+		right: 30px;
+		z-index: -1;
+	}
+}
+.service-sidebar-menu,
+.service-sidebar-menu2 {
+	.gardenar-navigation {
+		display: block;
+	}
+}
+.rt-service-sidebar, .service-sidebar-menu, .service-sidebar-menu2 {
+	.elementor-element {
+		.elementor-heading-title {
+			border-bottom: 2px solid #DCE5D3;
+			padding-bottom: 25px;
+			position: relative;
+			margin-bottom: 10px;
+			&:before {
+				content: "";
+				height: 4px;
+				width: 50px;
+				background-color: $secondary_color;
+				position: absolute;
+				bottom: -3px;
+				left: 0;
+				border-radius: 10px;
+			}
+		}
+	}
+	ul.menu,
+	.gardenar-navbar {
+		li {
+			padding-bottom: 0;
+			width: 100%;
+			&:last-child {
+				a {
+					margin-bottom: 0;
+				}
+			}
+			a {
+				position: relative;
+				display: block;
+				color: $title_color !important;
+				background-color: $white_color;
+				border-radius: 8px;
+				padding: 18px 22px;
+				font-weight: 500;
+				line-height: 22px;
+				font-size: 17px;
+				z-index: 1;
+				margin-bottom: 6px;
+				text-transform: capitalize;
+				&:after {
+					position: absolute;
+					right: 22px;
+					content: "\e84b";
+					font-family: "rt-fontello";
+					color: $primary_color;
+					transition: all .3s ease-in-out;
+				}
+				&:before {
+					display: none;
+				}
+				&:hover {
+					background-color: $primary_color;
+					color: $white_color !important;
+					&:after {
+						color: $white_color;
+					}
+				}
+			}
+			&.current-menu-item {
+				a {
+					background-color: $primary_color;
+					color: $white_color !important;
+					&:after {
+						color: $white_color;
+					}
+				}
+			}
+		}
+	}
+
+	//.fluentform-widget-heading {
+	//	.fluentform-widget-title {
+	//		border-bottom: 2px solid #DCE5D3;
+	//		padding-bottom: 23px;
+	//		position: relative;
+	//		margin-bottom: 33px;
+	//		&:before {
+	//			content: "";
+	//			height: 4px;
+	//			width: 50px;
+	//			background-color: $secondary_color;
+	//			position: absolute;
+	//			bottom: -3px;
+	//			left: 0;
+	//			border-radius: 10px;
+	//		}
+	//	}
+	//}
+	.frm-fluent-form {
+		.ff-el-input--label {
+			display: none;
+		}
+		.ff-el-form-control {
+			font-size: 15px;
+		}
+		input {
+			height: 55px;
+		}
+		.ff-btn-submit {
+			width: 100%;
+			padding: 15px 30px;
+			background-color: $primary_color !important;
+		}
+		.ff-el-form-check-label {
+			font-size: 15px;
+			line-height: 1.6;
+		}
+	}
+}
+
+
+.service-sidebar-menu2 {
+	ul.menu,
+	.gardenar-navbar {
+		li {
+			a {
+				background-color: #F4FAEE;
+			}
+		}
+	}
+}
+

@@ -1,0 +1,96 @@
+// Menu Icon
+
+.rt-phone-1 {
+	display: flex;
+	align-items: center;
+	line-height: 1.4;
+	.phone-icon {
+		padding-right: 8px;
+	}
+	.phone-label {
+		padding-right: 8px;
+	}
+	.content {
+		display: flex;
+		align-items: center;
+	}
+}
+.rt-phone-2 {
+	display: flex;
+	align-items: center;
+	line-height: 1.4;
+	.phone-icon {
+		color: $button_color;
+		padding-right: 8px;
+		i {
+			height: 40px;
+			width: 40px;
+			border-radius: 50%;
+			background-color: $primary_color;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+		}
+	}
+	.phone-label {
+		color: #6a6a6a;
+		font-size: 13px;
+		font-weight: 600;
+		padding-right: 8px;
+	}
+}
+
+// woo action button
+.rt-cart-float-inner .rt-cart-icon .items {
+	display: none;
+}
+.menu-icon-action {
+	.item-icon {}
+	.action-icon {
+		position: relative;
+		i {
+			color: $title_color;
+			font-size: 20px;
+		}
+		> span {
+			position: absolute;
+			right: -5px;
+			top: -13px;
+			color: $white_color;
+			background-color: $primary_color;
+			border-radius: 50%;
+			font-size: 13px;
+			width: 18px;
+			height: 18px;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+		}
+	}
+}
+
+.cart-icon-area {
+	a {
+		position: relative;
+		i {
+			font-size: 24px;
+			color: $title_color;
+		}
+		.cart-icon-num {
+			height: 20px;
+			width: 20px;
+			background-color: $primary_color;
+			color: $white_color;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			border-radius: 100%;
+			font-size: 10px;
+			font-weight: 500;
+			position: absolute;
+			top: -5px;
+			right: -5px;
+		}
+	}
+}
+
