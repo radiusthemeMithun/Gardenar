@@ -7,9 +7,14 @@
  * @package gardenar
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use RT\Gardenar\Helpers\Fns;
 use RT\Gardenar\Modules\Pagination;
 use RT\Gardenar\Modules\TeamRelated;
+
 
 $content_columns = Fns::content_columns();
 

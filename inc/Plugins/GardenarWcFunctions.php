@@ -8,6 +8,9 @@ namespace RT\Gardenar\Plugins;
 
 use RadiusTheme\SB\Helpers\BuilderFns;
 use RT\Gardenar\Modules\Pagination;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 class GardenarWcFunctions {
 	protected static $instance = null;
@@ -275,7 +278,7 @@ class GardenarWcFunctions {
 		}
 
 		if ( $in_cart ) {
-			echo sprintf( '<a rel="nofollow" title="%s" href="%s" data-quantity="%s" data-product_id="%s" data-product_sku="%s">' . $html . '</a>',
+			echo sprintf( '<a rel="nofollow" title="%s" href="%s" data-quantity="%s" data-product_id="%s" data-product_sku="%s">' . wp_kses_post( $html ) . '</a>',
 				esc_attr( $product->add_to_cart_text() ),
 				esc_url( wc_get_cart_url() ),
 				esc_attr( isset( $quantity ) ? $quantity : 1 ),
@@ -283,7 +286,7 @@ class GardenarWcFunctions {
 				esc_attr( $product->get_sku() )
 			);
 		} else {
-			echo sprintf( '<a rel="nofollow" title="%s" href="%s" data-quantity="%s" data-product_id="%s" data-product_sku="%s" class="%s">' . $html . '</a>',
+			echo sprintf( '<a rel="nofollow" title="%s" href="%s" data-quantity="%s" data-product_id="%s" data-product_sku="%s" class="%s">' . wp_kses_post( $html ) . '</a>',
 				esc_attr( $product->add_to_cart_text() ),
 				esc_url( $product->add_to_cart_url() ),
 				esc_attr( isset( $quantity ) ? $quantity : 1 ),

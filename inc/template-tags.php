@@ -9,6 +9,9 @@
 use RT\Gardenar\Options\Opt;
 use RT\Gardenar\Helpers\Fns;
 use RT\Gardenar\Modules\PostShare;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /*Allow HTML for the kses post*/
 function gardenar_html( $html, $context = '' ) {
@@ -190,6 +193,10 @@ function gardenar_html( $html, $context = '' ) {
 				'mozallowfullscreen'    => [],
 				'loading'               => [],
 			],
+			'time'       => [  
+				'class'    => [],
+				'datetime' => [],
+			],
 		];
 	}
 
@@ -209,7 +216,9 @@ if ( ! function_exists( 'gardenar_custom_menu_cb' ) ) {
 	function gardenar_custom_menu_cb( $args ) {
 		extract( $args );
 		$add_menu_link = admin_url( 'nav-menus.php' );
-		$menu_text     = sprintf( __( "Add %s Menu", "gardenar" ), $theme_location );
+		$menu_text     = sprintf( 
+			/* translators: %s: Theme Location */
+			__( "Add %s Menu", "gardenar" ), $theme_location );
 		__( 'Add a menu', 'gardenar' );
 		if ( ! current_user_can( 'manage_options' ) ) {
 			$add_menu_link = home_url();
@@ -287,7 +296,7 @@ if ( ! function_exists( 'gardenar_menu_icons_group' ) ) {
 						<div class="cart-icon-area">
 							<a href="<?php echo esc_url( wc_get_cart_url() );?>">
 								<i class="icon-rt-cart-2" aria-hidden="true"></i>
-								<span class="cart-icon-num"><?php echo WC()->cart->get_cart_contents_count();?></span>
+								<span class="cart-icon-num"><?php echo esc_html ( WC() ->cart->get_cart_contents_count() );?></span>
 							</a>
 						</div>
 					</li>
@@ -296,7 +305,7 @@ if ( ! function_exists( 'gardenar_menu_icons_group' ) ) {
 				<?php if ( $args['login'] ) : ?>
 					<li class="rt-user-login rt-button">
 						<a  class="btn button-2" href="<?php echo esc_url( wp_login_url() ) ?>" aria-label="user login">
-							<?php if ( gardenar_option( 'rt_get_login_label' ) ) { ?><?php echo gardenar_option( 'rt_get_login_label' ) ?><?php } ?>
+							<?php if ( gardenar_option( 'rt_get_login_label' ) ) { ?><?php echo esc_html( gardenar_option ( 'rt_get_login_label' ) ) ?><?php } ?>
 							<i class="icon-rt-right-arrow-2"></i>
 						</a>
 					</li>
@@ -349,16 +358,22 @@ if ( ! function_exists( 'gardenar_readmore_text' ) ) {
 	 *
 	 * @return string
 	 */
-	function gardenar_readmore_text() {
+	// function gardenar_readmore_text() {
 
-		if ( empty( gardenar_option( 'rt_blog_read_more' ) ) ) {
-			return;
+	// 	if ( empty( gardenar_option( 'rt_blog_read_more' ) ) ) {
+	// 		return;
+	// 	}
+	// 	return sprintf(
+	// 		'%s %s',
+	// 		esc_html( gardenar_option( 'rt_blog_read_more' ) ),
+	// 		the_title( '<span class="screen-reader-text">', '</span>', false )
+	// 	);
+	// }
+	function gardenar_readmore_text() {
+    	if ( empty( gardenar_option( 'rt_blog_read_more' ) ) ) {
+        	return;
 		}
-		return sprintf(
-			'%s %s',
-			esc_html( gardenar_option( 'rt_blog_read_more' ) ),
-			the_title( '<span class="screen-reader-text">', '</span>', false )
-		);
+		return esc_html( gardenar_option( 'rt_blog_read_more' ) );
 	}
 }
 
@@ -418,6 +433,7 @@ if ( ! function_exists( 'gardenar_posted_on' ) ) {
 	}
 }
 
+
 if ( ! function_exists( 'gardenar_posted_by' ) ) {
 	/**
 	 * Prints HTML with meta information about theme author.
@@ -425,7 +441,8 @@ if ( ! function_exists( 'gardenar_posted_by' ) ) {
 	 */
 	function gardenar_posted_by( $prefix = '' ) {
 		return sprintf(
-			esc_html__( '%s %s', 'gardenar' ),
+			/* translators: 1: Prefix text, 2: Author link */
+			esc_html__( '%1$s %2$s', 'gardenar' ),
 			$prefix ? '<span class="bypostauthor">' . $prefix . '</span>' : '',
 			'<span class="byline"><a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '" rel="author">' . esc_html( get_the_author() ) . '</a></span>'
 		);
@@ -517,7 +534,7 @@ if ( ! function_exists( 'gardenar_get_img' ) ) {
 				$getimagesize = wp_getimagesize( gardenar_get_file( $path, true ) );
 				$image_meta   = $getimagesize[3] ?? $image_meta;
 			}
-			echo '<img ' . $image_meta . ' src="' . esc_url( $image_url ) . '"/>';
+			gardenar_html('<img ' .  $image_meta . ' src="' . esc_url( $image_url ) . '"/>') ;
 		} else {
 			return $image_url;
 		}
@@ -601,14 +618,15 @@ if ( ! function_exists( 'gardenar_get_social_html' ) ) {
 			}
 			?>
 			<a target="_blank" href="<?php echo esc_url( $item['url'] ) ?>" aria-label="social link">
-				<?php echo gardenar_get_svg( $id ); ?>
+				<?php echo gardenar_get_svg( $id ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped?> 
 			</a>
 			<?php
 		}
 
-		echo ob_get_clean();
+		echo ob_get_clean(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 }
+
 
 if ( ! function_exists( 'gardenar_site_logo' ) ) {
 	/**
@@ -747,18 +765,18 @@ if ( ! function_exists( 'gardenar_reading_time' ) ) {
 	function gardenar_reading_time() {
 		$post_content = get_post()->post_content;
 		$post_content = strip_shortcodes( $post_content );
-		$post_content = strip_tags( $post_content );
+		$post_content = wp_strip_all_tags( $post_content );
 		$word_count   = str_word_count( $post_content );
 		$reading_time = floor( $word_count / 200 );
 
 		if ( $reading_time < 1 ) {
 			$result = esc_html__( 'Less than a minute', 'gardenar' );
 		} elseif ( $reading_time > 60 ) {
-			$result = sprintf( esc_html__( '%s hours read', 'gardenar' ), floor( $reading_time / 60 ) );
+			$result = sprintf( /* translators: %s: Reading Time */ esc_html__( '%s hours read', 'gardenar' ), floor( $reading_time / 60 ) );
 		} else if ( $reading_time == 1 ) {
 			$result = esc_html__( '1 min read', 'gardenar' );
 		} else {
-			$result = sprintf( esc_html__( '%s mins read', 'gardenar' ), $reading_time );
+			$result = sprintf( /* translators: %s: Reading Min Time */ esc_html__( '%s mins read', 'gardenar' ), $reading_time );
 		}
 
 		return '<span class="meta-reading-time meta-item">' . $result . '</span> ';
@@ -869,7 +887,7 @@ if ( ! function_exists( 'gardenar_post_meta' ) ) {
 		$args = wp_parse_args( $args, $default_args );
 
 		$comments_number = get_comments_number();
-		$comments_text   = sprintf( _n( 'Comment: %s', 'Comments: %s', $comments_number, 'gardenar' ), number_format_i18n( $comments_number ) );
+		$comments_text   = sprintf( /* translators: %s: Comments Number */ _n( 'Comment: %s', 'Comments: %s', $comments_number, 'gardenar' ), number_format_i18n( $comments_number ) );
 
 		$_meta_data = [];
 		$output     = '';
@@ -1057,7 +1075,7 @@ if ( ! function_exists( 'gardenar_entry_footer' ) ) {
 				<footer class="entry-footer rt-button">
 					<a class="btn <?php echo esc_attr( gardenar_option('rt_blog_btn_style') ); ?>"
 					   href="<?php echo esc_url( get_permalink() ) ?>" <?php if( is_numeric(gardenar_option('rt_blog_btn_radius') ) ) { ?>
-						style="border-radius: <?php echo esc_attr( gardenar_option('rt_blog_btn_radius') ); ?>px"<?php } ?>><?php echo gardenar_readmore_text() ?><i class="icon-rt-right-arrow-2"></i>
+						style="border-radius: <?php echo esc_html( gardenar_option('rt_blog_btn_radius') ); ?>px"<?php } ?>><?php echo esc_html(gardenar_readmore_text()) ?><i class="icon-rt-right-arrow-2"></i>
 					</a>
 				</footer>
 			<?php }
@@ -1196,11 +1214,11 @@ if ( ! function_exists( 'gardenar_single_post_footer_meta' ) ) {
 	function gardenar_single_post_footer_meta( $class = '', $includes = [ 'tag' ] ) {
 		if ( is_single() && gardenar_option( 'rt_single_tag_visibility' ) ) : ?>
 			<div class="post-footer-meta <?php echo esc_attr( $class ) ?>">
-				<?php echo gardenar_post_meta( [
+				<?php echo wp_kses_post(gardenar_post_meta( [
 					'with_list' => false,
 					'with_icon' => false,
 					'include'   => $includes,
-				] ); ?>
+				] ) ); ?>
 			</div>
 		<?php
 		endif;
@@ -1214,7 +1232,7 @@ if ( ! function_exists( 'gardenar_entry_content' ) ) {
 	function gardenar_entry_content() {
 		if ( ! is_single() ) {
 			$length = gardenar_option( 'rt_excerpt_limit' );
-			echo wp_trim_words( get_the_excerpt(), $length );
+			echo esc_html(wp_trim_words( get_the_excerpt(), $length ) );
 		} else {
 			the_content();
 		}
@@ -1297,11 +1315,11 @@ if ( ! function_exists( 'gardenar_separate_meta' ) ) {
 	function gardenar_separate_meta( $class = '', $includes = [ 'category' ] ) {
 		if ( ( ! is_single() && gardenar_option( 'rt_blog_above_meta_visibility' ) ) || ( is_single() && gardenar_option( 'rt_single_above_meta_visibility' ) ) ) : ?>
 		<div class="separate-meta <?php echo esc_attr( $class ) ?>">
-			<?php echo gardenar_post_meta( [
+			<?php echo wp_kses_post(gardenar_post_meta( [
 				'with_list' => false,
 				'with_icon' => false,
 				'include'   => $includes,
-			] ); ?>
+			] ) ); ?>
 			</div><?php
 		endif;
 	}
@@ -1323,11 +1341,11 @@ if ( ! function_exists( 'gardenar_single_entry_header' ) ) {
 			}
 
 			if ( ! empty( Fns::single_meta_lists() ) && gardenar_option( 'rt_single_meta_visibility' ) ) {
-				echo gardenar_post_meta( [
+				echo wp_kses_post(gardenar_post_meta( [
 					'with_list'     => true,
 					'include'       => Fns::single_meta_lists(),
 					'author_prefix' => gardenar_option( 'rt_author_prefix' ),
-				] );
+				] ) );
 			}
 			?>
 		</header>
@@ -1377,7 +1395,7 @@ if ( ! function_exists( 'gardenar_breadcrumb' ) ) {
 							echo '<a href="' . esc_url( $catlink ) . '">' . esc_html( $category[0]->cat_name ) . '</a> <span class="raquo"><i class="icon-rt-user-datalist-feature"></i></span> ';
 						}
 						echo '<span class="title">';
-						echo get_the_title();
+						echo esc_html(get_the_title() );
 						echo '</span>';
 					} elseif ( is_category() ) {
 						esc_html_e( 'Posts Category: ', 'gardenar' );
@@ -1397,9 +1415,8 @@ if ( ! function_exists( 'gardenar_breadcrumb' ) ) {
 						}
 
 						if ( ! empty( $tt_taxonomy_links ) ) {
-							echo implode( ' <span class="raquo">/</span> ', array_reverse( $tt_taxonomy_links ) ) . ' <span class="raquo"><i class="icon-rt-user-datalist-feature"></i></span> ';
+    						echo wp_kses_post( implode( ' <span class="raquo">/</span> ', array_reverse( $tt_taxonomy_links ) ) ) . ' <span class="raquo"><i class="icon-rt-user-datalist-feature"></i></span> ';
 						}
-
 						echo '<span class="title">';
 						echo esc_html( $tt_term->name );
 						echo '</span>';
@@ -1413,7 +1430,7 @@ if ( ! function_exists( 'gardenar_breadcrumb' ) ) {
 						echo '</span>';
 					} elseif ( is_page() ) {
 						echo '<span class="title">';
-						echo get_the_title();
+						echo esc_html(get_the_title() );
 						echo '</span>';
 					} elseif ( is_home() ) {
 						echo '<span class="title">';
@@ -1479,41 +1496,52 @@ function gardenar_comments_cbf( $comment, $args, $depth ) {
 					} ?>
 				</div>
 				<div class="author-info">
-					<?php
-					// Display author name
-					printf( __( '<cite class="fn">%s</cite>', 'gardenar' ), get_comment_author_link() ); ?>
+			<?php
+					printf(
+						'<cite class="fn">%s</cite>',
+						wp_kses_post( get_comment_author_link() )
+					);
+					?>
 
 					<div class="comment-meta commentmetadata">
-						<a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ); ?>"><?php
-							/* translators: 1: date, 2: time */
+						<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
+							<?php
 							printf(
-								__( '%1$s at %2$s', 'gardenar' ),
-								get_comment_date(),
-								get_comment_time()
-							); ?>
-						</a><?php
-						edit_comment_link( __( 'Edit', 'gardenar' ), '  ', '' ); ?>
+								/* translators: 1: date, 2: time */
+								esc_html__( '%1$s at %2$s', 'gardenar' ),
+								esc_html( get_comment_date() ),
+								esc_html( get_comment_time() )
+							);
+							?>
+						</a>
+						<?php edit_comment_link( esc_html__( 'Edit', 'gardenar' ), '  ', '' ); ?>
 					</div><!-- .comment-meta -->
-					<div class="comment-details">
 
-						<div class="comment-text"><?php comment_text(); ?></div><!-- .comment-text -->
-						<?php
-						// Display comment moderation text
-						if ( $comment->comment_approved == '0' ) { ?>
-							<em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'gardenar' ); ?></em>
-							<br/><?php
-						} ?>
+					<div class="comment-details">
+						<div class="comment-text"><?php comment_text(); ?></div>
+
+						<?php if ( '0' === $comment->comment_approved ) : ?>
+							<em class="comment-awaiting-moderation">
+								<?php esc_html_e( 'Your comment is awaiting moderation.', 'gardenar' ); ?>
+							</em>
+							<br/>
+						<?php endif; ?>
 
 						<?php
 						$icon = gardenar_get_svg( 'share' );
-						// Display comment reply link
-						comment_reply_link( array_merge( $args, [
-							'add_below'  => $add_below,
-							'depth'      => $depth,
-							'max_depth'  => $args['max_depth'],
-							'reply_text' => $icon . __( 'Reply', 'gardenar' )
-						] ) ); ?>
 
+						comment_reply_link(
+							array_merge(
+								$args,
+								[
+									'add_below' => $add_below,
+									'depth'     => $depth,
+									'max_depth' => $args['max_depth'],
+									'reply_text'=> $icon . esc_html__( 'Reply', 'gardenar' ),
+								]
+							)
+						);
+						?>
 					</div><!-- .comment-details -->
 				</div>
 
@@ -1556,3 +1584,7 @@ if ( ! function_exists( 'gardenar_hanburger' ) ) {
 	}
 
 }
+
+
+
+

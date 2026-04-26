@@ -5,6 +5,9 @@ namespace RT\Gardenar\Custom;
 use RT\Gardenar\Helpers\Fns;
 use RT\Gardenar\Traits\SingletonTraits;
 use RT\Gardenar\Options\Opt;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * Extras.

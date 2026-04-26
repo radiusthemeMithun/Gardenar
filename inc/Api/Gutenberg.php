@@ -8,6 +8,9 @@
 namespace RT\Gardenar\Api;
 
 use RT\Gardenar\Traits\SingletonTraits;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * Customizer class

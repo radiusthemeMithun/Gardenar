@@ -6,6 +6,9 @@
  *
  * @package gardenar
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 $meta_list = gardenar_option( 'rt_single_meta', '', true );
 $meta      = gardenar_option( 'rt_blog_above_meta_visibility' );

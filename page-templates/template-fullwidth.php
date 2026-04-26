@@ -6,6 +6,9 @@
  *
  * @package gardenar
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 
 use RT\Gardenar\Helpers\Fns;
@@ -16,7 +19,7 @@ get_header(); ?>
 
 			<div class="row">
 
-				<div class="<?php echo Fns::content_columns() ?>">
+				<div class="<?php echo Fns::content_columns()  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped?>">
 					<main id="main" class="site-main" role="main">
 
 						<?php

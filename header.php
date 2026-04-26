@@ -8,6 +8,9 @@
  *
  * @package gardenar
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 use RT\Gardenar\Options\Opt;
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>

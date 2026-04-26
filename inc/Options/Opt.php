@@ -4,6 +4,9 @@ namespace RT\Gardenar\Options;
 
 use RT\Gardenar\Api\Customizer;
 use RT\Gardenar\Traits\SingletonTraits;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 class Opt {
 

@@ -9,6 +9,9 @@
 
 
 use RT\Gardenar\Helpers\Fns;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 if ( is_singular() && is_active_sidebar( Fns::default_sidebar('single') ) ) {
 	gardenar_sidebar( Fns::default_sidebar('single')  );

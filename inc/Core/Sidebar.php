@@ -5,6 +5,9 @@ namespace RT\Gardenar\Core;
 use RT\Gardenar\Helpers\Constants;
 use RT\Gardenar\Helpers\Fns;
 use RT\Gardenar\Traits\SingletonTraits;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * Sidebar.
@@ -28,7 +31,7 @@ class Sidebar {
 
 			register_sidebar( [
 				'id'            => $sidebar['id'],
-				'name'          => sprintf( esc_html_x( '%s', 'Widget Name', 'gardenar' ), $sidebar['name'] ),
+				'name'          => sprintf( /* translators: %s: Sidebar */ esc_html_x( 'Sidebar: %s', 'Widget Name', 'gardenar' ), $sidebar['name'] ),
 				'description'   => $sidebar['description'] ?? '',
 				'before_widget' => '<section id="%1$s" class="widget ' . $classes . ' %2$s">',
 				'after_widget'  => '</section>',

@@ -6,6 +6,9 @@
  *
  * @package gardenar
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 $meta_list = gardenar_option( 'rt_blog_meta', '', true );
 if ( gardenar_option( 'rt_blog_above_meta_visibility' ) ) {
@@ -26,12 +29,12 @@ $duration = gardenar_option('duration');
 			<header class="entry-header">
 				<?php gardenar_separate_meta( 'title-above-meta' );
 				if ( ! empty( $meta_list ) && gardenar_option( 'rt_meta_visibility' ) ) {
-					echo gardenar_post_meta( [
+					echo wp_kses_post(gardenar_post_meta( [
 						'with_list'     => true,
 						'with_icon'     => true,
 						'include'       => $meta_list,
 						'author_prefix' => gardenar_option( 'rt_author_prefix' ),
-					] );
+					] ) );
 				}
 				if ( ! is_single() ) {
 					the_title( sprintf( '<h2 class="entry-title default-max-width"><a href="%s">', esc_url( get_permalink() ) ), '</a></h2>' );

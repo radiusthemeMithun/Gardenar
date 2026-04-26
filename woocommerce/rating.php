@@ -32,7 +32,7 @@ $average      = $product->get_average_rating();
 if ( $rating_count > 0 ) : ?>
 
 	<div class="woocommerce-product-rating">
-		<div class="product-rating"><?php echo wc_get_rating_html( $average ); ?><span class="rating-count">(<?php echo absint($rating_count); ?>)</span></div>
+		<div class="product-rating"><?php echo wp_kses_post(wc_get_rating_html( $average ) ); ?><span class="rating-count">(<?php echo absint($rating_count); ?>)</span></div>
 	</div>
 
 <?php endif; ?>

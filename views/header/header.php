@@ -6,6 +6,9 @@
  *
  * @package gardenar
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 use RT\Gardenar\Options\Opt;
 
@@ -18,7 +21,7 @@ $_fullwidth = Opt::$header_width == 'full' ? '-fluid' : '';
 	<div class="header-container rt-container<?php echo esc_attr($_fullwidth) ?>">
 		<div class="row navigation-menu-wrap align-middle m-0">
 			<div class="site-branding">
-				<?php echo gardenar_site_logo( $logo_h1 ); ?>
+				<?php echo wp_kses_post( gardenar_site_logo( $logo_h1 ) ); ?>
 			</div><!-- .site-branding -->
 			<nav class="gardenar-navigation pl-15 pr-15 <?php echo esc_attr( $menu_classes ) ?>" role="navigation">
 				<?php

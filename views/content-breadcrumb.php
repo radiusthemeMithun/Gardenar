@@ -4,6 +4,9 @@
  * @since   1.0
  * @version 1.0
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 if( function_exists( 'bcn_display') ){
 	echo '<div class="breadcrumb-area"><div class="entry-breadcrumb">';
@@ -15,7 +18,8 @@ if( function_exists( 'bcn_display') ){
 	}
 	echo '</div></div>';
 } else {
-	echo '<div class="breadcrumb-area"><div class="entry-breadcrumb">';
-	echo gardenar_breadcrumb();
+	echo '<div class="breadcrumb-area"><div class="entry-breadcrumb">';                           
+	echo wp_kses_post( gardenar_breadcrumb() );
 	echo '</div></div>';
 }
+ 

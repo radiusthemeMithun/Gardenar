@@ -6,6 +6,9 @@
  *
  * @package gardenar
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 $meta_list = gardenar_option( 'rt_blog_meta', '', true );
 if ( gardenar_option( 'rt_blog_above_meta_visibility' ) && !empty( has_post_thumbnail() ) && !empty( $rt_post_gallerys_raw ) ) {
@@ -83,12 +86,12 @@ $duration = gardenar_option('duration');
 		<div class="entry-wrapper">
 			<header class="entry-header">
 				<?php if ( ! empty( $meta_list ) && gardenar_option( 'rt_meta_visibility' ) ) {
-					echo gardenar_post_meta( [
+					echo wp_kses_post(gardenar_post_meta( [
 						'with_list'     => true,
 						'with_icon'     => true,
 						'include'       => $meta_list,
 						'author_prefix' => gardenar_option( 'rt_author_prefix' ),
-					] );
+					] ) );
 				}
 
 				if ( ! is_single() ) {

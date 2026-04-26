@@ -5,6 +5,9 @@ namespace RT\Gardenar\Setup;
 use RT\Gardenar\Helpers\Constants;
 use RT\Gardenar\Options\Opt;
 use RT\Gardenar\Traits\SingletonTraits;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * Enqueue.

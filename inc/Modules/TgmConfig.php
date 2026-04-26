@@ -7,6 +7,9 @@
 
 namespace RT\Gardenar\Modules;
 use RT\Gardenar\Traits\SingletonTraits;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 require_once get_template_directory() . '/inc/Lib/class-tgm-plugin-activation.php';
 class TgmConfig {
@@ -31,14 +34,14 @@ class TgmConfig {
 				'slug'     => 'gardenar-core',
 				'source'   => 'gardenar-core.zip',
 				'required' => true,
-				'version'  => '1.1.2'
+				'version'  => '1.1.3'
 			],
 			[
 				'name'     => 'RT Framework',
 				'slug'     => 'rt-framework',
 				'source'   => 'rt-framework.zip',
 				'required' => true,
-				'version'  => '3.0.3'
+				'version'  => '3.0.4'
 			],
 
 			// Repository

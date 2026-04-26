@@ -7,9 +7,14 @@
  * @package gardenar
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use RT\Gardenar\Helpers\Fns;
 use RT\Gardenar\Options\Opt;
 use RT\Gardenar\Modules\PostRelated;
+
 
 get_header();
 $classes = Fns::class_list( [

@@ -10,6 +10,9 @@
 use RT\Gardenar\Helpers\Fns;
 use RT\Gardenar\Options\Opt;
 use RT\Gardenar\Modules\Pagination;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 get_header();
 $post_classes = "";

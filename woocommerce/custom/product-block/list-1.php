@@ -4,6 +4,9 @@
  * @since   1.0
  * @version 1.0
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 use RadiusTheme\SB\Helpers\Fns;
 use RT\Gardenar\Plugins\GardenarWcFunctions;
 global $product;

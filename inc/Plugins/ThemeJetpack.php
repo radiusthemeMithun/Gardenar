@@ -9,6 +9,9 @@ namespace RT\Gardenar\Plugins;
 
 use RT\Gardenar\Traits\SingletonTraits;
 use Jetpack;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 class ThemeJetpack {
 	use SingletonTraits;

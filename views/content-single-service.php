@@ -7,6 +7,9 @@
  * @package gardenar
  */
 use RT\Gardenar\Options\Opt;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 ?>
 <div id="post-<?php the_ID(); ?>" <?php post_class( 'service-single' ); ?>>

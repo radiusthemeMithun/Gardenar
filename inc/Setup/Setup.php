@@ -3,6 +3,9 @@
 namespace RT\Gardenar\Setup;
 
 use RT\Gardenar\Traits\SingletonTraits;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 class Setup {
 	use SingletonTraits;
@@ -20,8 +23,13 @@ class Setup {
 	}
 
 	public function gardenar_add_to_cart_number() {
-		global $woocommerce;    ob_start();?>    <span class="cart-icon-num"><?php echo WC()->cart->get_cart_contents_count();?></span>
-		<?php    $fragments['span.cart-icon-num'] = ob_get_clean();    return $fragments;
+		global $woocommerce;
+		ob_start();
+		?>
+		<span class="cart-icon-num"><?php echo esc_html( WC()->cart->get_cart_contents_count() ); ?></span>
+		<?php
+		$fragments['span.cart-icon-num'] = ob_get_clean();
+		return $fragments;
 	}
 
 	/**

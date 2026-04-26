@@ -3,6 +3,9 @@
 namespace RT\Gardenar\Options;
 
 use RT\Gardenar\Traits\SingletonTraits;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 class Layouts {
 

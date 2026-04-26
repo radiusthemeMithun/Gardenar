@@ -4,6 +4,9 @@
  * @link https://codex.wordpress.org/Template_Hierarchy
  * @package gardenar
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 $id = get_the_ID();
 $rt_service_icon= get_post_meta( $id, 'rt_service_icon', true );
@@ -30,7 +33,9 @@ $content = wp_trim_words( get_the_excerpt(), gardenar_option( 'rt_service_excerp
 		<div class="service-content">
 			<div class="service-info">
 				<?php if (!empty( $rt_service_icon )  ) { ?>
-					<div class="service-icon" <?php echo wp_specialchars_decode( esc_attr( $service_bg ), ENT_COMPAT ); ?>><i class="<?php gardenar_html( $rt_service_icon , false );?>"></i></div>
+					<div class="service-icon">
+						<i <?php echo esc_attr( $service_bg ); ?> class="<?php echo esc_attr( $rt_service_icon ); ?>"></i>
+					</div>
 				<?php } ?>
 				<h2 class="service-title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h2>
 			</div>

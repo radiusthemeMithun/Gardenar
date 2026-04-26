@@ -6,6 +6,9 @@
  *
  * @package gardenar
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 $footer_width = 'container'. gardenar_option('rt_footer_width');
 $copyright_center = gardenar_option('rt_social_footer') ? 'justify-content-between' : 'justify-content-center';
@@ -36,7 +39,7 @@ $copyright_center = gardenar_option('rt_social_footer') ? 'justify-content-betwe
 		<div class="footer-container <?php echo esc_attr( $footer_width ) ?>">
 			<div class="d-flex align-items-center <?php echo esc_attr($copyright_center); ?>">
 				<div class="copyright-text">
-					<?php gardenar_html( str_replace( '[y]', date( 'Y' ), gardenar_option( 'rt_footer_copyright' ) ) ); ?>
+					<?php gardenar_html( str_replace( '[y]', gmdate( 'Y' ), gardenar_option( 'rt_footer_copyright' ) ) ); ?>
 				</div>
 				<?php if( gardenar_option('rt_social_footer') ) { ?>
 				<div class="social-icon d-flex gap-20 align-items-center">

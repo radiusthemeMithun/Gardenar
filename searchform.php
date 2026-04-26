@@ -4,7 +4,11 @@
  * @since   1.0
  * @version 1.0
  */
+	if ( ! defined( 'ABSPATH' ) ) {
+		exit;
+	}
 ?>
+
 
 <form role="search" method="get" class="gardenar-search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 	<div class="search-box">

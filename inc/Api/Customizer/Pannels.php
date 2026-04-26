@@ -10,6 +10,10 @@ namespace RT\Gardenar\Api\Customizer;
 use RT\Gardenar\Traits\SingletonTraits;
 use RTFramework\Customize;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Customizer class
  */

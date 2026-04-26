@@ -7,6 +7,9 @@
  */
 namespace RT\Gardenar\Modules;
 use RT\Gardenar\Traits\SingletonTraits;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 class AjaxSearch{
 

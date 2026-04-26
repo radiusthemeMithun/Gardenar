@@ -126,7 +126,7 @@ class ServiceRelated {
 										<?php gardenar_post_thumbnail('full'); ?>
 										<?php if (!empty( $rt_service_icon )  ) { ?>
 											<div class="service-icon">
-												<i <?php echo wp_specialchars_decode( esc_attr( $service_bg ), ENT_COMPAT ); ?> class="<?php gardenar_html( $rt_service_icon , false );?>"></i>
+												<i <?php echo esc_attr( $service_bg ); ?> class="<?php echo esc_attr( $rt_service_icon ); ?>"></i>
 											</div>
 										<?php } ?>
 									</div>

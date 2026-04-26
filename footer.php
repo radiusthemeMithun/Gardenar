@@ -12,6 +12,10 @@
 use RT\Gardenar\Options\Opt;
 use RT\Gardenar\Helpers\Fns;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $classes = Fns::class_list([
 	'site-footer',
 	Opt::$footer_schema

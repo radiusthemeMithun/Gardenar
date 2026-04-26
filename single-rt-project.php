@@ -10,6 +10,9 @@
 use RT\Gardenar\Helpers\Fns;
 use RT\Gardenar\Modules\Pagination;
 use RT\Gardenar\Modules\ProjectRelated;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 $content_columns = Fns::content_columns();
 

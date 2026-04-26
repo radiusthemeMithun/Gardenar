@@ -6,6 +6,9 @@
  *
  * @package gardenar
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 use RT\Gardenar\Options\Opt;
 use RT\Gardenar\Helpers\Fns;

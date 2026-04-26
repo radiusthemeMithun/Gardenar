@@ -6,6 +6,9 @@
  *
  * @package gardenar
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 use RT\Gardenar\Options\Opt;
 
@@ -36,7 +39,7 @@ $_fullwidth = Opt::$header_width == 'full' ? '-fluid' : '';
 				<span><i class="icon-rt-phone-2"></i><a href="tel:<?php echo esc_attr( gardenar_option( 'rt_phone' ) );?>"><?php gardenar_html( gardenar_option( 'rt_phone' ) , false );?></a></span>
 				<?php } ?>
 				<div class="social-icon">
-					<?php if( gardenar_option( 'rt_follow_us_label' ) ) { ?><label><?php echo gardenar_option( 'rt_follow_us_label' ) ?></label><?php } ?>
+					<?php if( gardenar_option( 'rt_follow_us_label' ) ) { ?><label><?php echo esc_html( gardenar_option( 'rt_follow_us_label' )) ?></label><?php } ?>
 					<?php gardenar_get_social_html( '#555' ); ?>
 				</div>
 			</div>

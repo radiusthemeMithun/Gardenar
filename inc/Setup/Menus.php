@@ -3,6 +3,9 @@
 namespace RT\Gardenar\Setup;
 
 use RT\Gardenar\Traits\SingletonTraits;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * Menus

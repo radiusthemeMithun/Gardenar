@@ -6,6 +6,9 @@
  *
  * @package gardenar
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 ?>
 <article data-post-id="<?php the_ID(); ?>" <?php post_class( gardenar_post_class() ); ?>>

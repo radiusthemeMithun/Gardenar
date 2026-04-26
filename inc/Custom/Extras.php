@@ -4,6 +4,9 @@ namespace RT\Gardenar\Custom;
 
 use RT\Gardenar\Traits\SingletonTraits;
 use RT\Gardenar\Options\Opt;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * Extras.
@@ -139,9 +142,9 @@ class Extras {
 		<?php if ( $item->menu_item_parent < 1 ) : ?>
 			<p class="description mega-menu-wrapper widefat">
 				<label for="gardenar_mega_menu-<?php echo esc_attr($item_id); ?>" class="widefat">
-					<?php _e( 'Make as Mega Menu', 'gardenar' ); ?><br>
+					<?php echo esc_html__( 'Make as Mega Menu', 'gardenar' ); ?><br>
 					<select class="widefat" id="gardenar_mega_menu-<?php echo esc_attr($item_id); ?>" name="gardenar_mega_menu[<?php echo esc_attr($item_id); ?>]">
-						<option value=""><?php _e( 'Choose Mega Menu', 'gardenar' ); ?></option>
+						<option value=""><?php echo esc_html__( 'Choose Mega Menu', 'gardenar' ); ?></option>
 						<?php
 						for ( $item = 2; $item < 12; $item++ ) {
 							$menu_item  = $item;
@@ -156,7 +159,11 @@ class Extras {
 							$selected = ( $_mega_menu == $class ) ? ' selected="selected" ' : null;
 							?>
 							<option <?php echo esc_attr( $selected ); ?> value="<?php echo esc_attr( $class ); ?>">
-								<?php printf( __( 'Mega menu - %1$s Col %2$s', 'gardenar' ), $menu_item, $label_hide ); ?>
+								<?php printf( /* translators: %1$s: Menu Item. %2$s:Label Hide  */ 
+								esc_html__( 'Mega menu - %1$s Col %2$s', 'gardenar' ), 
+								esc_html( $menu_item ), 
+								esc_html( $label_hide ) 
+								); ?>
 							</option>
 							<?php
 						}
@@ -249,7 +256,7 @@ class Extras {
 		flush_rewrite_rules();
 	}
 
-	 public function insert_social_in_head() {
+	public function insert_social_in_head() {
 		global $post;
 
 		if ( ! isset( $post ) ) {
@@ -260,13 +267,13 @@ class Extras {
 
 		if ( is_singular('post') ) {
 			$link = get_the_permalink() . '?v='.time();
-			echo '<meta property="og:url" content="' . $link . '" />';
+			echo '<meta property="og:url" content="' . esc_url ($link)  . '" />';
 			echo '<meta property="og:type" content="article" />';
-			echo '<meta property="og:title" content="' . $title . '" />';
+			echo '<meta property="og:title" content="' . esc_attr( $title )  . '" />';
 
 			if ( ! empty( $post->post_content ) ) {
-				echo '<meta property="og:description" content="' . wp_trim_words( $post->post_content,
-						150 ) . '" />';
+				echo '<meta property="og:description" content="' . esc_attr (wp_trim_words( $post->post_content,
+						150 ) ) . '" />';
 			}
 			$attachment_id = get_post_thumbnail_id( $post->ID );
 			if ( ! empty( $attachment_id ) ) {
@@ -274,14 +281,14 @@ class Extras {
 				if ( ! empty( $thumbnail ) ) {
 					$attachment = get_post($attachment_id);
 					$thumbnail[0] .= '?v='.time();
-					echo '<meta property="og:image" content="' . $thumbnail[0] . '" />';
-					echo '<link itemprop="thumbnailUrl" href="' . $thumbnail[0] . '">';
-					echo '<meta property="og:image:type" content="'.$attachment->post_mime_type.'">';
+					echo '<meta property="og:image" content="' . esc_url( $thumbnail[0] ) . '" />';
+					echo '<link itemprop="thumbnailUrl" href="' . esc_url( $thumbnail[0] ) . '">';
+					echo '<meta property="og:image:type" content="'. esc_attr( $attachment ->post_mime_type ).'">';
 				}
 			}
-			echo '<meta property="og:site_name" content="' . get_bloginfo( 'name' ) . '" />';
+			echo '<meta property="og:site_name" content="' . esc_attr (get_bloginfo( 'name' ) ) . '" />';
 			echo '<meta name="twitter:card" content="summary" />';
-			echo '<meta property="og:updated_time" content="'.time().'" />';
+			echo '<meta property="og:updated_time" content="'. esc_attr (time() ).'" />';
 		}
 	}
 

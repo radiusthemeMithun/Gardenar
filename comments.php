@@ -9,6 +9,9 @@
  *
  * @package gardenar
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /*
  * If the current post is protected by a password and

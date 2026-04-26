@@ -6,6 +6,9 @@
  *
  * @package gardenar
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 use RT\Gardenar\Options\Opt;
 use RT\Gardenar\Helpers\Fns;
 $logo_h1 = ! is_singular( [ 'post' ] );
@@ -15,13 +18,13 @@ $topinfo = ( gardenar_option( 'rt_contact_address' ) || gardenar_option( 'rt_pho
 
 <div class="gardenar-offcanvas-drawer">
 	<div class="offcanvas-logo">
-		<?php echo gardenar_site_logo( $logo_h1 ); ?>
+		<?php echo wp_kses_post( gardenar_site_logo( $logo_h1 ) ); ?>
 		<a class="trigger-icon trigger-off-canvas" href="#">×</a>
 	</div>
 	<?php if( gardenar_option( 'rt_about_label' ) || gardenar_option( 'rt_about_text' ) ) { ?>
 	<div class="offcanvas-about offcanvas-address">
-		<?php if( gardenar_option( 'rt_about_label' ) ) { ?><label><?php echo gardenar_option( 'rt_about_label' ) ?></label><?php } ?>
-		<?php if( gardenar_option( 'rt_about_text' ) ) { ?><p><?php echo gardenar_option( 'rt_about_text' ) ?></p><?php } ?>
+		<?php if( gardenar_option( 'rt_about_label' ) ) { ?><label><?php echo wp_kses_post(gardenar_option( 'rt_about_label' ) ) ?></label><?php } ?>
+		<?php if( gardenar_option( 'rt_about_text' ) ) { ?><p><?php echo wp_kses_post( gardenar_option( 'rt_about_text' ) ) ?></p><?php } ?>
 	</div>
 	<?php } ?>
 	<nav class="offcanvas-navigation" role="navigation">
@@ -39,7 +42,7 @@ $topinfo = ( gardenar_option( 'rt_contact_address' ) || gardenar_option( 'rt_pho
 
 	<div class="offcanvas-address">
 		<?php if( $topinfo ) { ?>
-			<?php if( gardenar_option( 'rt_contact_info_label' ) ) { ?><label><?php echo gardenar_option( 'rt_contact_info_label' ) ?></label><?php } ?>
+			<?php if( gardenar_option( 'rt_contact_info_label' ) ) { ?><label><?php echo esc_html( gardenar_option( 'rt_contact_info_label' ) ) ?></label><?php } ?>
 			<ul class="offcanvas-info">
 				<?php if( gardenar_option( 'rt_contact_address' ) ) { ?>
 					<li><i class="icon-rt-map"></i><?php gardenar_html( gardenar_option( 'rt_contact_address' ) , false );?> </li>
